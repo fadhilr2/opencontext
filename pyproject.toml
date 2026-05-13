@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opencontext"
+version = "0.1.0"
+description = "CLI tool for architectural context tracking and agent task generation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+dependencies = [
+    "typer>=0.9.0",
+    "questionary>=2.0.0",
+    "requests>=2.28.0",
+    "lancedb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+]
+
+[project.scripts]
+opencontext = "opencontext.cli.main:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
