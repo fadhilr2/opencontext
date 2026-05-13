@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenContext — Architectural Context Tracking for AI Agents</title>
+  <meta name="description" content="OpenContext is a CLI tool that prevents AI code drift by anchoring agent tasks to your system's real architectural constraints via Jira, OpenSpec, and vector search." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--3" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-brand" id="nav-brand">
+        <span class="nav-brand-icon">⬡</span>
+        <span>OpenContext</span>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#workflow" class="nav-link">Workflow</a></li>
+        <li><a href="#demo" class="nav-link">Live Demo</a></li>
+        <li><a href="#commands" class="nav-link">Commands</a></li>
+      </ul>
+      <a href="#demo" class="btn btn--sm btn--primary">Try Demo</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="hero section">
+      <div class="container">
+        <div class="badge badge--hero animate-in" style="--delay:0ms">
+          <span class="badge-dot"></span>
+          Zero Drift Architecture Enforcement
+        </div>
+        <h1 class="hero-title animate-in" style="--delay:100ms">
+          Stop AI from<br />
+          <span class="gradient-text">breaking your architecture</span>
+        </h1>
+        <p class="hero-subtitle animate-in" style="--delay:200ms">
+          OpenContext is a CLI tool that anchors AI coding agents to your real system constraints —
+          pulling context from Jira tickets, OpenSpec docs, and Git diffs, then vectorizing everything
+          so your agents always know <em>exactly</em> what they're allowed to build.
+        </p>
+        <div class="hero-actions animate-in" style="--delay:300ms">
+          <a href="#demo" class="btn btn--primary btn--lg">
+            <span>Explore Live Demo</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#how-it-works" class="btn btn--ghost btn--lg">Learn More</a>
+        </div>
+        <div class="hero-terminal animate-in" style="--delay:400ms">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="terminal-dot terminal-dot--red"></span>
+              <span class="terminal-dot terminal-dot--yellow"></span>
+              <span class="terminal-dot terminal-dot--green"></span>
+              <span class="terminal-title">opencontext CLI</span>
+            </div>
+            <div class="terminal-body" id="terminal-hero">
+              <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cmd typewriter" id="typewriter">opencontext setup</span>
+              </div>
+              <div class="terminal-output" id="terminal-output-hero"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM / SOLUTION -->
+    <section id="how-it-works" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">The Problem</div>
+          <h2 class="section-title">AI agents drift. <span class="gradient-text">OpenContext doesn't let them.</span></h2>
+          <p class="section-subtitle">
+            When you give a Jira ticket to an AI agent with no context, it guesses your stack, invents patterns, and ships code that looks right but breaks everything. OpenContext fixes this by making the agent's context <strong>ground truth</strong>.
+          </p>
+        </div>
+        <div class="problem-grid">
+          <div class="problem-card problem-card--bad card-hover">
+            <div class="problem-icon problem-icon--bad">✗</div>
+            <h3>Without OpenContext</h3>
+            <ul class="problem-list">
+              <li>Agent invents libraries you don't use</li>
+              <li>New code ignores existing patterns</li>
+              <li>Jira ticket context is lost by message 3</li>
+              <li>Architecture decisions get repeated from scratch</li>
+              <li>No guardrails — agent can suggest anything</li>
+            </ul>
+          </div>
+          <div class="problem-card problem-card--good card-hover">
+            <div class="problem-icon problem-icon--good">✓</div>
+            <h3>With OpenContext</h3>
+            <ul class="problem-list">
+              <li>Spec & Jira facts vectorized into RAG store</li>
+              <li>Agent task anchored to architectural constraints</li>
+              <li>Git diff insights injected at every commit</li>
+              <li>Zero Drift — forbidden tech explicitly blocked</li>
+              <li>Repeatable, consistent, architecture-safe output</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="workflow" class="section section--alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Workflow</div>
+          <h2 class="section-title">Four commands. <span class="gradient-text">Complete architecture safety.</span></h2>
+        </div>
+        <div class="workflow-steps">
+
+          <div class="workflow-step card-hover" id="step-1">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <div class="step-icon">🔑</div>
+              <h3 class="step-title"><code>opencontext setup</code></h3>
+              <p class="step-desc">One-time global configuration. Stores your Jira email &amp; API token in <code>~/.opencontext/global.config.json</code> and installs a Git pre-commit hook that auto-captures staged diffs.</p>
+              <div class="step-pill">Global</div>
+            </div>
+          </div>
+
+          <div class="workflow-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">↓</div>
+          </div>
+
+          <div class="workflow-step card-hover" id="step-2">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <div class="step-icon">📐</div>
+              <h3 class="step-title"><code>opencontext init</code></h3>
+              <p class="step-desc">Project-level init. Sets your Jira domain in <code>opencontext.config.json</code>, then fetches all OpenSpec design documents and converts them into a structured context for the AI agent.</p>
+              <div class="step-pill">Per Project</div>
+            </div>
+          </div>
+
+          <div class="workflow-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">↓</div>
+          </div>
+
+          <div class="workflow-step card-hover" id="step-3">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <div class="step-icon">🧠</div>
+              <h3 class="step-title"><code>opencontext initbranch</code></h3>
+              <p class="step-desc">Run after <code>git checkout -b &lt;ticket&gt;</code>. Vectorizes architectural facts with <strong>sentence-transformers</strong> + <strong>LanceDB</strong>, fetches the Jira ticket, and generates a fully-grounded <code>agent.md</code> task.</p>
+              <div class="step-pill">Per Branch</div>
+            </div>
+          </div>
+
+          <div class="workflow-connector" aria-hidden="true">
+            <div class="connector-line"></div>
+            <div class="connector-arrow">↓</div>
+          </div>
+
+          <div class="workflow-step card-hover" id="step-4">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <div class="step-icon">🔄</div>
+              <h3 class="step-title"><code>opencontext sync</code></h3>
+              <p class="step-desc">Re-runs during development. Re-vectorizes the latest <code>diff_analysis.json</code> (captured by the Git hook) and regenerates the agent task — keeping context fresh with every commit.</p>
+              <div class="step-pill">Continuous</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE DEMO -->
+    <section id="demo" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Interactive Demo</div>
+          <h2 class="section-title">See it in <span class="gradient-text">action</span></h2>
+          <p class="section-subtitle">Click any command below to simulate what OpenContext does behind the scenes.</p>
+        </div>
+
+        <div class="demo-layout">
+          <!-- Command selector -->
+          <div class="demo-sidebar">
+            <p class="demo-sidebar-label">Choose a command</p>
+            <div class="demo-commands" role="list">
+              <button id="demo-btn-setup" class="demo-cmd-btn demo-cmd-btn--active" data-cmd="setup" role="listitem">
+                <span class="demo-cmd-icon">🔑</span>
+                <span class="demo-cmd-text">
+                  <strong>setup</strong>
+                  <small>Global credentials &amp; git hook</small>
+                </span>
+              </button>
+              <button id="demo-btn-init" class="demo-cmd-btn" data-cmd="init" role="listitem">
+                <span class="demo-cmd-icon">📐</span>
+                <span class="demo-cmd-text">
+                  <strong>init</strong>
+                  <small>Project config &amp; spec fetch</small>
+                </span>
+              </button>
+              <button id="demo-btn-initbranch" class="demo-cmd-btn" data-cmd="initbranch" role="listitem">
+                <span class="demo-cmd-icon">🧠</span>
+                <span class="demo-cmd-text">
+                  <strong>initbranch</strong>
+                  <small>Vectorize &amp; generate agent task</small>
+                </span>
+              </button>
+              <button id="demo-btn-sync" class="demo-cmd-btn" data-cmd="sync" role="listitem">
+                <span class="demo-cmd-icon">🔄</span>
+                <span class="demo-cmd-text">
+                  <strong>sync</strong>
+                  <small>Re-sync diff &amp; regenerate</small>
+                </span>
+              </button>
+            </div>
+
+            <!-- What it generates -->
+            <div class="demo-artifacts" id="demo-artifacts">
+              <p class="demo-sidebar-label" style="margin-top: 1.5rem;">Generated files</p>
+              <div class="artifact-list" id="artifact-list"></div>
+            </div>
+          </div>
+
+          <!-- Terminal output -->
+          <div class="demo-main">
+            <div class="terminal terminal--demo">
+              <div class="terminal-bar">
+                <span class="terminal-dot terminal-dot--red"></span>
+                <span class="terminal-dot terminal-dot--yellow"></span>
+                <span class="terminal-dot terminal-dot--green"></span>
+                <span class="terminal-title" id="demo-terminal-title">opencontext setup</span>
+              </div>
+              <div class="terminal-body" id="demo-terminal-body">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <!-- Explanation card -->
+            <div class="explanation-card" id="explanation-card">
+              <h4 id="explanation-title"></h4>
+              <p id="explanation-body"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="commands" class="section section--alt">
+      <div class="container">
+        <div class="section-header">
+          <div class="badge">Architecture</div>
+          <h2 class="section-title">Under the <span class="gradient-text">hood</span></h2>
+        </div>
+        <div class="arch-grid">
+          <div class="arch-card card-hover">
+            <div class="arch-icon">📡</div>
+            <h3>Fetching Layer</h3>
+            <p>Pulls live data from <strong>Jira REST API</strong>, <strong>OpenSpec markdown files</strong>, and <strong>Git staged diffs</strong>. All raw context feeding into the pipeline.</p>
+            <div class="arch-modules">
+              <span class="module-tag">jira_retriever.py</span>
+              <span class="module-tag">spec_fetcher.py</span>
+              <span class="module-tag">git_diff.py</span>
+            </div>
+          </div>
+          <div class="arch-card card-hover">
+            <div class="arch-icon">🔢</div>
+            <h3>Pipeline Layer</h3>
+            <p>Converts text into dense vector embeddings using <strong>all-MiniLM-L6-v2</strong> via sentence-transformers, stored in a local <strong>LanceDB</strong> vector database.</p>
+            <div class="arch-modules">
+              <span class="module-tag">vectorizer.py</span>
+              <span class="module-tag">LanceDB</span>
+              <span class="module-tag">sentence-transformers</span>
+            </div>
+          </div>
+          <div class="arch-card card-hover">
+            <div class="arch-icon">⚡</div>
+            <h3>Inference Layer</h3>
+            <p>RAG-retrieves the top-3 relevant context chunks matching the Jira ticket, then assembles a structured <strong>agent.md</strong> task with Zero Drift guardrails.</p>
+            <div class="arch-modules">
+              <span class="module-tag">inference/main.py</span>
+              <span class="module-tag">RAG retrieval</span>
+              <span class="module-tag">agent.md</span>
+            </div>
+          </div>
+          <div class="arch-card card-hover">
+            <div class="arch-icon">🖥️</div>
+            <h3>CLI Layer</h3>
+            <p>Typer-based CLI exposing 4 commands. Git hook auto-triggers diff capture on every <code>git commit</code>, keeping context always current.</p>
+            <div class="arch-modules">
+              <span class="module-tag">cli/main.py</span>
+              <span class="module-tag">Typer</span>
+              <span class="module-tag">pre-commit hook</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick install -->
+        <div class="install-block">
+          <p class="install-label">Quick Install</p>
+          <div class="code-block" id="install-code-block">
+            <code id="install-code">pip install -e .</code>
+            <button class="copy-btn" id="copy-install-btn" title="Copy to clipboard" aria-label="Copy install command">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-glow" aria-hidden="true"></div>
+          <div class="badge">Get Started</div>
+          <h2 class="cta-title">Your agents deserve <span class="gradient-text">ground truth</span></h2>
+          <p class="cta-subtitle">Clone the repo, run <code>pip install -e .</code>, and stop your AI from guessing.</p>
+          <div class="cta-actions">
+            <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+              View on GitHub
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#demo" class="btn btn--ghost btn--lg">Run the Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="nav-brand-icon">⬡</span>
+        <span class="footer-text">OpenContext — Built to keep AI on the straight and narrow.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
