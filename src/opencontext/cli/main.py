@@ -29,21 +29,26 @@ def setup():
     print("Global Config Set")
 
     # --- Generate Git Hook ---
+
+
+    # Get the absolute path of the directory where THIS script is located
+    # (Assuming git_diff.py is in a folder named 'fetching' next to this setup script)
+    project_root = Path(__file__).parent.parent.absolute()  # goes up to src/opencontext/
+    script_target = project_root / "fetching" / "git_diff.py"
+
     git_hook_dir = Path(".git/hooks")
     if git_hook_dir.exists():
-        hook_path = git_hook_dir / "pre-commit"  # You can change this to 'post-commit' if preferred
-        hook_content = "#!/bin/bash\n\npython3 fetching/git_diff.py"
-        
+        hook_path = git_hook_dir / "pre-commit"
+    
+        # Use the absolute path in the shebang/command
+        hook_content = f"#!/bin/bash\n\npython3 {script_target.as_posix()}"
+    
         with open(hook_path, "w") as f:
             f.write(hook_content)
-        
-        # Make the hook executable (chmod +x)
-        st = os.stat(hook_path)
-        os.chmod(hook_path, st.st_mode | stat.S_IEXEC)
-        print(f"Git hook generated at {hook_path}")
-    else:
-        print("Warning: .git directory not found. Git hook was not generated.")
-    # -------------------------
+    
+        # Make executable
+        hook_path.chmod(hook_path.stat().st_mode | stat.S_IEXEC)
+        print(f"Git hook generated with dynamic path: {script_target}")
 
 @app.command()
 def init():

@@ -37,7 +37,7 @@ You must output the `agent.md` file using the structure below. Do not provide a 
 - **Architectural Guardrails**: Hard constraints extracted from the system state.
 - **Definition of Done**: Success criteria specific to the feature.
 
-Write the output directly to `agent.md`.
+Write the output directly to the project root as './agent.md'.
 """
 
     # Ensure the Antigravity task directory exists
