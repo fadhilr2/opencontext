@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OpenContext — Architectural Context Tracking for AI Agents</title>
-  <meta name="description" content="OpenContext is a CLI tool that prevents AI code drift by anchoring agent tasks to your system's real architectural constraints via Jira, OpenSpec, and vector search." />
+  <meta name="description"
+    content="OpenContext is a CLI tool that prevents AI code drift by anchoring agent tasks to your system's real architectural constraints via Jira, OpenSpec, and vector search." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- Animated background -->
@@ -55,7 +60,11 @@
         <div class="hero-actions animate-in" style="--delay:300ms">
           <a href="#demo" class="btn btn--primary btn--lg">
             <span>Explore Live Demo</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </a>
           <a href="#how-it-works" class="btn btn--ghost btn--lg">Learn More</a>
         </div>
@@ -84,9 +93,12 @@
       <div class="container">
         <div class="section-header">
           <div class="badge">The Problem</div>
-          <h2 class="section-title">AI agents drift. <span class="gradient-text">OpenContext doesn't let them.</span></h2>
+          <h2 class="section-title">AI agents drift. <span class="gradient-text">OpenContext doesn't let them.</span>
+          </h2>
           <p class="section-subtitle">
-            When you give a Jira ticket to an AI agent with no context, it guesses your stack, invents patterns, and ships code that looks right but breaks everything. OpenContext fixes this by making the agent's context <strong>ground truth</strong>.
+            When you give a Jira ticket to an AI agent with no context, it guesses your stack, invents patterns, and
+            ships code that looks right but breaks everything. OpenContext fixes this by making the agent's context
+            <strong>ground truth</strong>.
           </p>
         </div>
         <div class="problem-grid">
@@ -130,7 +142,9 @@
             <div class="step-content">
               <div class="step-icon">🔑</div>
               <h3 class="step-title"><code>opencontext setup</code></h3>
-              <p class="step-desc">One-time global configuration. Stores your Jira email &amp; API token in <code>~/.opencontext/global.config.json</code> and installs a Git pre-commit hook that auto-captures staged diffs.</p>
+              <p class="step-desc">One-time global configuration. Stores your Jira email &amp; API token in
+                <code>~/.opencontext/global.config.json</code> and installs a Git pre-commit hook that auto-captures
+                staged diffs.</p>
               <div class="step-pill">Global</div>
             </div>
           </div>
@@ -145,7 +159,9 @@
             <div class="step-content">
               <div class="step-icon">📐</div>
               <h3 class="step-title"><code>opencontext init</code></h3>
-              <p class="step-desc">Project-level init. Sets your Jira domain in <code>opencontext.config.json</code>, then fetches all OpenSpec design documents and converts them into a structured context for the AI agent.</p>
+              <p class="step-desc">Project-level init. Sets your Jira domain in <code>opencontext.config.json</code>,
+                then fetches all OpenSpec design documents and converts them into a structured context for the AI agent.
+              </p>
               <div class="step-pill">Per Project</div>
             </div>
           </div>
@@ -160,7 +176,9 @@
             <div class="step-content">
               <div class="step-icon">🧠</div>
               <h3 class="step-title"><code>opencontext initbranch</code></h3>
-              <p class="step-desc">Run after <code>git checkout -b &lt;ticket&gt;</code>. Vectorizes architectural facts with <strong>sentence-transformers</strong> + <strong>LanceDB</strong>, fetches the Jira ticket, and generates a fully-grounded <code>agent.md</code> task.</p>
+              <p class="step-desc">Run after <code>git checkout -b &lt;ticket&gt;</code>. Vectorizes architectural facts
+                with <strong>sentence-transformers</strong> + <strong>LanceDB</strong>, fetches the Jira ticket, and
+                generates a fully-grounded <code>agent.md</code> task.</p>
               <div class="step-pill">Per Branch</div>
             </div>
           </div>
@@ -175,7 +193,8 @@
             <div class="step-content">
               <div class="step-icon">🔄</div>
               <h3 class="step-title"><code>opencontext sync</code></h3>
-              <p class="step-desc">Re-runs during development. Re-vectorizes the latest <code>diff_analysis.json</code> (captured by the Git hook) and regenerates the agent task — keeping context fresh with every commit.</p>
+              <p class="step-desc">Re-runs during development. Re-vectorizes the latest <code>diff_analysis.json</code>
+                (captured by the Git hook) and regenerates the agent task — keeping context fresh with every commit.</p>
               <div class="step-pill">Continuous</div>
             </div>
           </div>
@@ -270,7 +289,8 @@
           <div class="arch-card card-hover">
             <div class="arch-icon">📡</div>
             <h3>Fetching Layer</h3>
-            <p>Pulls live data from <strong>Jira REST API</strong>, <strong>OpenSpec markdown files</strong>, and <strong>Git staged diffs</strong>. All raw context feeding into the pipeline.</p>
+            <p>Pulls live data from <strong>Jira REST API</strong>, <strong>OpenSpec markdown files</strong>, and
+              <strong>Git staged diffs</strong>. All raw context feeding into the pipeline.</p>
             <div class="arch-modules">
               <span class="module-tag">jira_retriever.py</span>
               <span class="module-tag">spec_fetcher.py</span>
@@ -280,7 +300,8 @@
           <div class="arch-card card-hover">
             <div class="arch-icon">🔢</div>
             <h3>Pipeline Layer</h3>
-            <p>Converts text into dense vector embeddings using <strong>all-MiniLM-L6-v2</strong> via sentence-transformers, stored in a local <strong>LanceDB</strong> vector database.</p>
+            <p>Converts text into dense vector embeddings using <strong>all-MiniLM-L6-v2</strong> via
+              sentence-transformers, stored in a local <strong>LanceDB</strong> vector database.</p>
             <div class="arch-modules">
               <span class="module-tag">vectorizer.py</span>
               <span class="module-tag">LanceDB</span>
@@ -290,7 +311,8 @@
           <div class="arch-card card-hover">
             <div class="arch-icon">⚡</div>
             <h3>Inference Layer</h3>
-            <p>RAG-retrieves the top-3 relevant context chunks matching the Jira ticket, then assembles a structured <strong>agent.md</strong> task with Zero Drift guardrails.</p>
+            <p>RAG-retrieves the top-3 relevant context chunks matching the Jira ticket, then assembles a structured
+              <strong>agent.md</strong> task with Zero Drift guardrails.</p>
             <div class="arch-modules">
               <span class="module-tag">inference/main.py</span>
               <span class="module-tag">RAG retrieval</span>
@@ -300,7 +322,8 @@
           <div class="arch-card card-hover">
             <div class="arch-icon">🖥️</div>
             <h3>CLI Layer</h3>
-            <p>Typer-based CLI exposing 4 commands. Git hook auto-triggers diff capture on every <code>git commit</code>, keeping context always current.</p>
+            <p>Typer-based CLI exposing 4 commands. Git hook auto-triggers diff capture on every
+              <code>git commit</code>, keeping context always current.</p>
             <div class="arch-modules">
               <span class="module-tag">cli/main.py</span>
               <span class="module-tag">Typer</span>
@@ -315,7 +338,11 @@
           <div class="code-block" id="install-code-block">
             <code id="install-code">pip install -e .</code>
             <button class="copy-btn" id="copy-install-btn" title="Copy to clipboard" aria-label="Copy install command">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
             </button>
           </div>
         </div>
@@ -331,9 +358,13 @@
           <h2 class="cta-title">Your agents deserve <span class="gradient-text">ground truth</span></h2>
           <p class="cta-subtitle">Clone the repo, run <code>pip install -e .</code>, and stop your AI from guessing.</p>
           <div class="cta-actions">
-            <a href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
+            <a href="https://github.com/fadhilr2/opencontext" target="_blank" rel="noopener"
+              class="btn btn--primary btn--lg">
               View on GitHub
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
             </a>
             <a href="#demo" class="btn btn--ghost btn--lg">Run the Demo</a>
           </div>
@@ -353,4 +384,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>
