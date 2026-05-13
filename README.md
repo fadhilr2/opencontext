@@ -1,5 +1,7 @@
 # OpenContext
 
+pip install opencontext-refactory-hackathon
+
 CLI tool for architectural context tracking and agent task generation.
 
 ## Installation
