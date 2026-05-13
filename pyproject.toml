@@ -3,13 +3,26 @@ requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "opencontext"
+name = "opencontext-refactory-hackathon"
 version = "0.1.0"
 description = "CLI tool for architectural context tracking and agent task generation"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "MIT"}
-
+license = "MIT"
+authors = [
+    { name = "Fadhil R", email = "fadhilr2@example.com" }
+]
+keywords = ["cli", "architecture", "context", "agent", "jira", "sdlc"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Environment :: Console",
+]
 dependencies = [
     "typer>=0.9.0",
     "questionary>=2.0.0",
@@ -17,6 +30,11 @@ dependencies = [
     "lancedb>=0.4.0",
     "sentence-transformers>=2.2.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/fadhilr2/opencontext"
+Repository = "https://github.com/fadhilr2/opencontext"
+"Bug Tracker" = "https://github.com/fadhilr2/opencontext/issues"
 
 [project.scripts]
 opencontext = "opencontext.cli.main:app"
