@@ -6,8 +6,7 @@ CLI tool for architectural context tracking and agent task generation.
 
 ## Installation
 
-```pip install opencontext-refactory-hackathon
-```
+```pip install opencontext-refactory-hackathon```
 
 ## Usage
 
